@@ -33,11 +33,12 @@
             controller: "JoinController",
             controllerAs: "JoinViewModel"
           })
-          .state("add",{
+          .state("Add",{
             url:"/add",
             templateUrl:"js/playlists/user/add.html",
             controller:"AddController",
             controllerAs: "AddViewModel",
+            params: { "playlist_id": null }
           })
           .state("Create", {
             url: "/create",
@@ -56,14 +57,14 @@
             templateUrl: "js/playlists/host/confirmation.html",
             controller: "ConfirmationController",
             controllerAs: "ConfirmationViewModel",
-            params: { "playlist_id": null, }
+            params: { "playlist_id": null }
           })
           .state("Invite", {
             url: "/invite",
             templateUrl: "js/playlists/host/invite.html",
             controller: "InviteController",
             controllerAs: "InviteViewModel",
-            params: { "playlist_id": null, }
+            params: { "playlist_id": null }
           })
           .state("AdminPlist", {
             url: "/admin/playlist/:id",

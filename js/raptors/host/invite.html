@@ -1,0 +1,39 @@
+
+<h3>Invite.html</h3>
+
+<button class="button"><a data-ui-sref="Home" >Back to home</a></button>
+
+
+<h2>Invite users!</h2>
+
+<button class="button"><a data-ui-sref="AdminPlist">Go to Admin Playlist</a></button>
+
+<form data-ng-submit="InviteViewModel.search(vm.song_search)">
+<input type="text" data-ng-model="vm.song_search" placeholder="Search for a song..." />
+<button type="submit">Search</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <td>#</td>
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Album</th>
+            <th>Album Art</th>
+            <th>Duration</th>
+            <th>Preview URL</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-ng-repeat="track in InviteViewModel.songs.tracks.items">
+            <td>{{$index}}</td>
+            <td>{{track.name}}</td>
+            <td>{{track.artist[0].name}}</td>
+            <td>{{track.album.name}}</td>
+            <td><img ng-src="track.album[0].images[0].url" style="height: 50px" /></td>
+            <td>{{track.duration_ms}}</td>
+            <td>{{track.preview_url}}</td>
+        </tr>
+    </tbody>
+</table>

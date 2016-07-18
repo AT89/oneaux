@@ -6,6 +6,7 @@
         .module ( "oneaux" )
         .factory ( "SongFactory", [
             "$resource",
+            "$stateParams",
             SongFactoryFunction
         ]);
 

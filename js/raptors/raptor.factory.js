@@ -10,7 +10,7 @@
         ]);
 
     function RaptorFactoryFunction ( $resource ) {
-        return $resource( "http://localhost:3000/dactyls/:id.json", {}, {
+        return $resource( "http://localhost:3000/playlists/:id.json", {}, {
             update: {method: "PUT"}
         });
     }

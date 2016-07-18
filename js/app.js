@@ -27,19 +27,18 @@
             controller: "AboutController",
             controllerAs: "AboutViewModel"
           })
-<<<<<<< HEAD
           .state("Join",{
             url:"/join",
             templateUrl:"js/raptors/user/join.html",
             controller: "JoinController",
             controllerAs: "JoinViewModel"
           })
-          .state("addsongs",{
+          .state("add",{
             url:"/add",
             templateUrl:"js/raptors/user/add.html",
             controller:"AddController",
-            // controllerAs: "AddViewModel"
-=======
+            controllerAs: "AddViewModel",
+          })
           .state("Create", {
             url: "/create",
             templateUrl: "js/raptors/host/create.html",
@@ -71,7 +70,7 @@
             templateUrl: "js/raptors/host/admin_plist.html",
             controller: "AdminPlistController",
             controllerAs: "AdminPlistViewModel"
->>>>>>> 13459c72c473d1ae97e740647547bf7d780a6e8a
+
           });
 
         }

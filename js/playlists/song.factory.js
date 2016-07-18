@@ -11,7 +11,7 @@
         ]);
 
     function SongFactoryFunction ( $resource, $stateParams ) {
-        return $resource( "https://dry-citadel-69831.herokuapp.com/playlists/:id/songs.json", {}, {
+        return $resource( "https://dry-citadel-69831.herokuapp.com/playlists/:playlist_id/songs.json", {}, {
             update: {method: "PUT"}
         });
     }

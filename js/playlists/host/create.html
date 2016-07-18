@@ -1,15 +1,16 @@
 
-<h3>Create.html</h3>
+<h3>Create a New Playlist</h3>
 
-<button class="button"><a data-ui-sref="Home" >Back to home</a></button>
+<button class="button"><a data-ui-sref="Home" >Home</a></button>
 
 
-<h2>Create a new Playlist!</h2>
+<br><br><br><br>
 
 <form data-ng-submit="vm.create()">
   <input placeholder="Name" data-ng-model="CreateViewModel.new_playlist.name" />
   <input placeholder="Access code" data-ng-model="CreateViewModel.new_playlist.access_code" />
   <input placeholder="Songs per user" data-ng-model="CreateViewModel.new_playlist.songs_per_user" />
   <input placeholder="Location" data-ng-model="CreateViewModel.new_playlist.location"></textarea>
+  <br><br><br><br>
   <button type="button" data-ng-click="CreateViewModel.create()">Create</button>
 </form>

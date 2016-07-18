@@ -44,19 +44,28 @@
             url: "/confirmation",
             templateUrl: "js/raptors/host/confirmation.html",
             controller: "ConfirmationController",
-            controllerAs: "ConfirmationViewModel"
+            controllerAs: "ConfirmationViewModel",
+            params: { "raptor_id": null, }
           })
           .state("Invite", {
             url: "/invite",
             templateUrl: "js/raptors/host/invite.html",
             controller: "InviteController",
-            controllerAs: "InviteViewModel"
+            controllerAs: "InviteViewModel",
+            params: { "raptor_id": null, }
           })
           .state("AdminPlist", {
-            url: "/admin/playlist",
+            url: "/admin/playlist/:id",
             templateUrl: "js/raptors/host/admin_plist.html",
             controller: "AdminPlistController",
             controllerAs: "AdminPlistViewModel"
+          })
+          .state("TestAddSong", {
+            url: "/testaddsong",
+            templateUrl: "js/raptors/host/test_add_song.html",
+            controller: "TestAddSongController",
+            controllerAs: "TestAddSongViewModel",
+            params: { "raptor_id": null, }
           });
         }
 

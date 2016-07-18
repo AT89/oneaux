@@ -2,12 +2,17 @@
     angular
     .module("oneaux")
     .controller("AddController", [
+        "$state",
+        "$stateParams",
         "SpotifyFactory",
+        "SongFactory",
         AddControllerFunction
     ])
-    function AddControllerFunction (SpotifyFactory) {
+    function AddControllerFunction ($state, $stateParams, SpotifyFactory, SongFactory) {
         console.log("I'm in the invite controller!")
         var vm = this;
+        vm.playlist_id = $stateParams.playlist_id;
+        console.log(vm.playlist_id);
 
         vm.search = function(query) {
             vm.query = query;
@@ -18,8 +23,10 @@
 
         vm.add_song = function (title, artist, album, image_url, duration, preview) {
             console.log("clicked button");
-            var new_song = {
-                // "user": vm.{{track.name}},
+
+            vm.new_song = new SongFactory({
+                "user": "Anh",
+                "playlist_id": vm.playlist_id,
                 "title": title,
                 "artist": artist,
                 "album": album,
@@ -27,8 +34,12 @@
                 "duration": duration,
                 "audio_url": preview,
                 "score": 0
-            }
-            
+            });
+            console.log(vm.new_song);
+            vm.new_song.$save({playlist_id: vm.playlist_id}).then(function() {
+                console.go("should redirect");
+                $state.go("Join");
+            })
         }
     }
 

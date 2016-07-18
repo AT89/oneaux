@@ -36,7 +36,7 @@
           .state("addsongs",{
             url:"/add",
             templateUrl:"js/raptors/user/add.html",
-            // controller:"AddController",
+            controller:"AddController",
             // controllerAs: "AddViewModel"
           });
 

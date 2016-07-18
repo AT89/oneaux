@@ -59,13 +59,6 @@
             templateUrl: "js/raptors/host/admin_plist.html",
             controller: "AdminPlistController",
             controllerAs: "AdminPlistViewModel"
-          })
-          .state("TestAddSong", {
-            url: "/testaddsong",
-            templateUrl: "js/raptors/host/test_add_song.html",
-            controller: "TestAddSongController",
-            controllerAs: "TestAddSongViewModel",
-            params: { "raptor_id": null, }
           });
         }
 

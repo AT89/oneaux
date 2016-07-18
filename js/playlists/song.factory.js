@@ -10,8 +10,8 @@
             SongFactoryFunction
         ]);
 
-    function SongFactoryFunction ( $resource ) {
-        return $resource( "http://localhost:3000/dactyls/:id.json", {}, {
+    function SongFactoryFunction ( $resource, $stateParams ) {
+        return $resource( "https://dry-citadel-69831.herokuapp.com/playlists/:id/songs.json", {}, {
             update: {method: "PUT"}
         });
     }

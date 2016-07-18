@@ -33,7 +33,7 @@
             controller: "JoinController",
             controllerAs: "JoinViewModel"
           })
-          .state("add",{
+          .state("Add",{
             url:"/add",
             templateUrl:"js/playlists/user/add.html",
             controller:"AddController",
@@ -70,8 +70,14 @@
             templateUrl: "js/playlists/host/admin_plist.html",
             controller: "AdminPlistController",
             controllerAs: "AdminPlistViewModel"
+          })
+          .state("CurrentPlaylist",{
+              url:"/current",
+              templateUrl: "js/playlists/user/playlist.html",
+              controller: "CurrentPlaylistViewModel",
+              controllerAs: "CurrentPlaylist"
+            })
 
-          });
 
         }
 

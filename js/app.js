@@ -2,8 +2,7 @@
 "use strict";
 
 (function() {
-    angular
-        .module ("dinosaur", [
+    angular.module ("dinosaur", [
             "ui.router",
             "ngAnimate",
             "ngResource",
@@ -27,7 +26,20 @@
             templateUrl: "js/raptors/about.html",
             controller: "AboutController",
             controllerAs: "AboutViewModel"
+          })
+          .state("Join",{
+            url:"/join",
+            templateUrl:"js/raptors/user/join.html",
+            // controller: "JoinController",
+            // controllerAs: "JoinViewModel"
+          })
+          .state("addsongs",{
+            url:"/add",
+            templateUrl:"js/raptors/user/add.html",
+            // controller:"AddController",
+            // controllerAs: "AddViewModel"
           });
+
         }
 
 

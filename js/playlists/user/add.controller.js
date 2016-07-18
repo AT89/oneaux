@@ -40,8 +40,8 @@
 
             console.log(vm.new_song);
             vm.new_song.$save({playlist_id: vm.playlist_id}).then(function() {
-                console.go("should redirect");
-                $state.go("Join");
+                console.log("should redirect");
+                $state.go("CurrentPlaylist");
             })
         }
     }

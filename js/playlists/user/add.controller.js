@@ -6,7 +6,7 @@
         AddControllerFunction
     ])
     function AddControllerFunction (SpotifyFactory) {
-        console.log("I'm in the invite controller!")
+        console.log("add controller!")
         var vm = this;
 
         vm.search = function(query) {
@@ -28,7 +28,8 @@
                 "audio_url": preview,
                 "score": 0
             }
-            
+            console.log(new_song);
+          
         }
     }
 

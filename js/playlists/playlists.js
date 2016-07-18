@@ -3,7 +3,7 @@
 
 (function() {
     angular
-        .module ("raptors", [])
+        .module ("playlists", [])
 
 
 // END OF IIFE

@@ -3,13 +3,13 @@
 
 (function(){
     angular
-        .module ( "dinosaur" )
-        .factory ( "SongFactory", [
+        .module ( "oneaux" )
+        .factory ( "PlaylistFactory", [
             "$resource",
-            SongFactoryFunction
+            PlaylistFactoryFunction
         ]);
 
-    function SongFactoryFunction ( $resource ) {
+    function PlaylistFactoryFunction ( $resource ) {
         return $resource( "http://localhost:3000/dactyls/:id.json", {}, {
             update: {method: "PUT"}
         });

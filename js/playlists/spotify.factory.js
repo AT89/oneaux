@@ -3,7 +3,7 @@
 
 (function(){
     angular
-        .module ( "dinosaur" )
+        .module ( "oneaux" )
         .factory ( "SpotifyFactory", [
             "$resource",
             SpotifyFactoryFunction

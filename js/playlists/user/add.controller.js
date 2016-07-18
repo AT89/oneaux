@@ -1,6 +1,6 @@
 (function() {
     angular
-    .module("dinosaur")
+    .module("oneaux")
     .controller("AddController", [
         "SpotifyFactory",
         AddControllerFunction

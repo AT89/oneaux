@@ -3,7 +3,7 @@
 
 (function() {
     angular
-    .module("dinosaur")
+    .module("oneaux")
     .controller("InviteController", [
         "SpotifyFactory",
         InviteControllerFunction

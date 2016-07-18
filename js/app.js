@@ -30,8 +30,8 @@
           .state("Join",{
             url:"/join",
             templateUrl:"js/raptors/user/join.html",
-            // controller: "JoinController",
-            // controllerAs: "JoinViewModel"
+            controller: "JoinController",
+            controllerAs: "JoinViewModel"
           })
           .state("addsongs",{
             url:"/add",

@@ -6,10 +6,12 @@
   <!-- title of song -->
   <!-- one button that is positive  -->
   <!-- one button that gives a thumbs down -->
+<div ng-repeat = "song in CurrentPlaylist">
+  <p>{{song[1].title}}</p>
 </div>
-  <div data-ng-repeat="song in CurrentPlaylistFunction.get_song">
-      <p>{{song.title}}</p>
-  </div>
+
+      <p>{{CurrentPlaylist}}</p>
+
 
 <ul> <!-- get song in the second and beyond position-->
   <li></li> <!-- show song title, song image, song artist-->

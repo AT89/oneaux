@@ -7,8 +7,8 @@
   <!-- one button that is positive  -->
   <!-- one button that gives a thumbs down -->
 </div>
-  <div data-ng-repeat="song in CurrentPlaylistFunction">
-      <p>song.title</p>
+  <div data-ng-repeat="song in CurrentPlaylistFunction.get_song">
+      <p>{{song.title}}</p>
   </div>
 
 <ul> <!-- get song in the second and beyond position-->

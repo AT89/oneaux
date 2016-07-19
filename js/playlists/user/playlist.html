@@ -1,20 +1,12 @@
 <p>Here is your current playlist</p>
 
-<div>
-  <!-- shows current song -->
-  <!-- has image link here -->
-  <!-- title of song -->
-  <!-- one button that is positive  -->
-  <!-- one button that gives a thumbs down -->
-<div ng-repeat = "song in CurrentPlaylist">
-  <p>{{song[1].title}}</p>
-</div>
-
-      <p>{{CurrentPlaylist}}</p>
-
-
-<ul> <!-- get song in the second and beyond position-->
-  <li></li> <!-- show song title, song image, song artist-->
-  <li></li>
-  <li></li>
+<ul ng-repeat = "song in CurrentPlaylist.songs" style="border:1px red solid">
+  <li>Title: {{song.title}}</li>
+  <li>Artist: {{song.artist}}</li>
+  <li>Album: {{song.album}}</li>
+  <li>Album Art:{{song.album_art}}</li>
+  <li>Audio URL: {{song.audio_url}}</li>
 </ul>
+<p>End<p>
+
+<!-- <p>{{CurrentPlaylist}}</p> -->

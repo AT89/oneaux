@@ -2,9 +2,9 @@
 "use strict";
 
 (function() {
-    angular
-        .module ("playlists", [])
+  angular
+  .module ("playlists", [])
 
 
-// END OF IIFE
+  // END OF IIFE
 })();

@@ -1,17 +1,16 @@
-
 "use strict";
 
 (function() {
-    angular
-    .module("oneaux")
-    .controller("AboutController", [
-        AboutControllerFunction
-    ])
+  angular
+  .module("oneaux")
+  .controller("AboutController", [
+    AboutControllerFunction
+  ])
 
-    function AboutControllerFunction () {
-        console.log("I'm in the about controller!")
-        var vm = this;
+  function AboutControllerFunction () {
+    console.log("I'm in the about controller!")
+    var vm = this;
 
-    }
+  }
 
 })();

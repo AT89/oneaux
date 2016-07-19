@@ -32,8 +32,7 @@ button {
 	padding:24px 53px;
 	text-decoration: none;
 	text-shadow:0px 0px 0px #ffffff;
-  height: 100px;
-  width: 200px;
+
 }
 button:hover {
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed));
@@ -45,6 +44,9 @@ button:hover {
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed',GradientType=0);
 	background-color:#dfdfdf;
 }
+button a:hover {
+  color: purple;
+}
 button:active {
 	position:relative;
 	top:1px;
@@ -53,7 +55,9 @@ button a{
   text-decoration: none;
   /*font-family: 'Alegreya Sans', sans-serif;*/
   dispay: inline-block;
-
+}
+a{
+  color:#777777;
 }
 a:visited{
   color:#777777;
@@ -74,4 +78,8 @@ p{
   margin-left: auto;
   margin-right: auto;
   max-width: 500px;
+}
+#addview{
+  margin-left: auto;
+  margin-right: auto;
 }

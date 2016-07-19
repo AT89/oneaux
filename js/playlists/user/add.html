@@ -3,7 +3,7 @@
 <button type="submit">Search</button>
 </form>
 <!-- <button class="button"><a data-ui-sref="CurrentPlaylist" >Go to playlist</a></button> -->
-<table>
+<table id="addview">
     <thead>
         <tr>
             <td>#</td>
@@ -12,22 +12,24 @@
             <th>Album</th>
             <th>Album Art</th>
             <th>Duration</th>
-            <th>Preview URL</th>
-            <th>Image URL </th>
+            <!-- <th>Preview URL</th>
+            <th>Image URL </th> -->
         </tr>
     </thead>
     <tbody>
         <tr data-ng-repeat="track in AddViewModel.songs.tracks.items">
-            <td><button data-ng-click="AddViewModel.add_song(track.name, track.artists[0].name, track.album.name, track.album.images[1].url, track.duration_ms, track.preview_url, track.album.images[1].url)">{{$index }}</button></td>
+            <td><button data-ng-click="AddViewModel.add_song(track.name, track.artists[0].name, track.album.name, track.album.images[1].url, track.duration_ms, track.preview_url, track.album.images[1].url)">{{$index+1 }}</button></td>
             <td>{{track.name}}</td>
             <td>{{track.artists[0].name}}</td>
             <td>{{track.album.name}}</td>
             <td><img ng-src={{track.album.images[1].url}} style="height: 50px" /></td>
-            <td>{{track.duration_ms}}</td>
+            <td>{{track.duration_ms.time_to_word}}</td>
             <!-- <td>{{track.preview_url}}</td>
             <td>{{track.album.images[1].url}}</td> -->
 
         </tr>
     </tbody>
 </table>
-<button class="button"><a data-ui-sref="CurrentPlaylist({id: {{AddViewModel.playlist_id}}})" >No Thanks</a></button>
+<button class="button"><a data-ui-sref="CurrentPlaylist({id: {{AddViewModel.playlist_id}}})">Playlist</a></button>
+<br><br></br><br>
+<button class="button"><a data-ui-sref="Home" >Home</a></button>

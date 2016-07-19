@@ -17,7 +17,7 @@
   </thead>
   <tbody>
     <tr data-ng-repeat="track in AddViewModel.songs.tracks.items">
-      <td><button data-ng-click="AddViewModel.add_song(track.name, track.artists[0].name, track.album.name, track.album.images[1].url, track.duration_ms, track.preview_url, track.album.images[1].url)">{{$index }}</button></td>
+      <td><button data-ng-click="AddViewModel.add_song(track.name, track.artists[0].name, track.album.name, track.album.images[1].url, track.duration_ms, track.preview_url, track.album.images[1].url, 'https://open.spotify.com/track/5g6kBRM595PnXe2VRDqLge')">{{$index }}</button></td>
       <td>{{track.name}}</td>
       <td>{{track.artists[0].name}}</td>
       <td>{{track.album.name}}</td>

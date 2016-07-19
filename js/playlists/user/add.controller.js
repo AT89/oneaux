@@ -23,7 +23,7 @@
       vm.songs = SpotifyFactory.get({q: vm.query});
     }
 
-    vm.add_song = function (title, artist, album, image_url, duration, preview) {
+    vm.add_song = function (title, artist, album, image_url, duration, preview, uri) {
       console.log("clicked button");
 
       vm.new_song = new SongFactory({
@@ -35,7 +35,8 @@
         "album_art": image_url,
         "duration": duration,
         "audio_url": preview,
-        "score": 0
+        "score": 0,
+        "uri": uri
       })
 
       console.log(vm.new_song);

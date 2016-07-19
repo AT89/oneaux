@@ -6,6 +6,8 @@
 
 <h2>Admin Playlist!</h2>
 
+
+
 <div class="songs">
     <div class="adminsong" data-ng-repeat="song in AdminPlistViewModel.songs | orderBy: 'score' : true">
         <p>{{song.score}}&nbsp&nbsp-&nbsp&nbsp{{song.title}}&nbsp&nbsp-&nbsp&nbsp{{song.artist}}</p>
@@ -15,3 +17,5 @@
 
 <button class="button" data-ng-click="AdminPlistViewModel.update_score(1)">Vote up</a></button>
 <button class="button" data-ng-click="AdminPlistViewModel.update_score(-1)">Vote down</a></button>
+<button class="button" data-ng-click="AdminPlistViewModel.login()">Log in to Spotify</button>
+<button class="button" data-ng-click="AdminPlistViewModel.create_playlist()">Create plist</a></button>

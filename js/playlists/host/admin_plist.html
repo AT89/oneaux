@@ -5,3 +5,13 @@
 
 
 <h2>Admin Playlist!</h2>
+
+<div class="songs">
+    <div class="adminsong" data-ng-repeat="song in AdminPlistViewModel.songs | orderBy: 'score' : true">
+        <p>{{song.score}}&nbsp&nbsp-&nbsp&nbsp{{song.title}}&nbsp&nbsp-&nbsp&nbsp{{song.artist}}</p>
+        <img data-ng-src="{{song.album_art}}" alt="{{song.title}}" />
+    </div>
+</div>
+
+<button class="button" data-ng-click="AdminPlistViewModel.update_score(1)">Vote up</a></button>
+<button class="button" data-ng-click="AdminPlistViewModel.update_score(-1)">Vote down</a></button>

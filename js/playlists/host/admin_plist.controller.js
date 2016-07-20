@@ -12,18 +12,20 @@
         "Spotify",
         "$http",
         "$sce",
+        "$scope",
+        "$interval",
         AdminPlistControllerFunction
     ])
 
-    function AdminPlistControllerFunction (PlaylistFactory, SongFactory, $state, $stateParams, Spotify, $http, $sce) {
-
-        var vm = this;
+    function AdminPlistControllerFunction (PlaylistFactory, SongFactory, $state, $stateParams, Spotify, $http, $sce,$scope,$interval) {
+                var vm = this;
         PlaylistFactory.get({id: $stateParams.id}).$promise.then(function(response) {
             vm.playlist = response;
             vm.play_song = $sce.trustAsHtml("<iframe src='https://embed.spotify.com/?uri=spotify:user:"+vm.playlist.spotify_user_id+":playlist:"+vm.playlist.spotify_playlist_id+"' width='300' height='380' frameborder='0' allowtransparency='true'></iframe>");
         });
         vm.songs = SongFactory.query({playlist_id: $stateParams.id});
         vm.playlist_counter = 2;
+
 
         vm.playlistSort = function () {
             vm.list_of_scores = [];
@@ -36,7 +38,7 @@
             vm.next_song = vm.songs.filter(function( obj ) {
                 if (obj.active === true) {
                     return obj.score == vm.max_score;
-                } 
+                }
             })
             if (localStorage.getItem('username') == vm.next_song.user) {
                 localStorage.setItem('user-song-count', parseInt(localStorage.getItem('user-song-count')) - 1);
@@ -58,6 +60,7 @@
             })
         }
 
+
         vm.refresh_token = function () {
             Spotify.login();
             vm.access_token = localStorage.getItem('spotify-token');
@@ -74,6 +77,22 @@
             song.$delete({playlist_id: vm.playlist.id, id: song.id});
             $state.reload();
         }
+/// function starts for timer
+      var c=60;
+      $scope.message="You have "+c+" seconds to vote on the next song.";
+      var timer=$interval (function{
+        $scope.message="You have "+c+" seconds to vote on the next song.";
+        c--;
+        console.log(c);
+        if(c==0){
+          vm.playlistSort();
+        }
+      },1000);
+
+
+
+
+
 
     }
 

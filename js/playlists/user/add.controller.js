@@ -19,6 +19,8 @@
     vm.playlist_id = $stateParams.playlist_id;
     PlaylistFactory.get({id: vm.playlist_id}).$promise.then(function(response) {
         vm.playlist = response;
+        console.log(vm.playlist);
+        return vm.playlist;
     })
 
 

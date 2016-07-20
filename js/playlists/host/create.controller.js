@@ -31,6 +31,7 @@
                 Spotify.createPlaylist(vm.user_id, { name: name })
                 .then(function (response) {
                     vm.spotify_playlist_id = response.id;
+                    console.log(vm.spotify_playlist_id);
                     vm.new_playlist = new PlaylistFactory();
                     vm.new_playlist.name = name;
                     vm.new_playlist.access_code = access_code;
@@ -41,6 +42,7 @@
                     vm.new_playlist.spotify_playlist_id = vm.spotify_playlist_id;
                     vm.new_playlist.$save().then(function() {
                         vm.new_playlist_id_key = vm.new_playlist.id;
+                        console.log(vm.new_playlist);
                         vm.new_playlist = {};
                         $state.go("Confirmation", {playlist_id: vm.new_playlist_id_key});
                     })
@@ -48,5 +50,5 @@
             })
         }
     }
-    
+
 })();

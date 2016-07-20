@@ -17,6 +17,7 @@
 
     var vm = this;
     vm.playlist_id = $stateParams.playlist_id;
+    vm.first_song_counter = 0;
     PlaylistFactory.get({id: vm.playlist_id}).$promise.then(function(response) {
         vm.playlist = response;
         console.log(vm.playlist);
@@ -35,19 +36,27 @@
         console.log(vm.playlist.spotify_playlist_id);
         console.log(vm.playlist.access_token);
         // Spotify.addPlaylistTracks(vm.playlist.spotify_user_id, vm.playlist.spotify_playlist_id, uri, vm.playlist.access_token);
+        if (vm.playlist.first_add == false) {
+            $http({
+              method: "POST",
+              url: "https://api.spotify.com/v1/users/"+vm.playlist.spotify_user_id+"/playlists/"+vm.playlist.spotify_playlist_id+"/tracks?uris="+uri,
+              headers: {
+                  "Accept": "application/json",
+                  "Authorization": "Bearer "+vm.playlist.access_token
+              }
+            }).then(function successCallback(response) {
+                console.log(response);
+                console.log(vm.playlist.first_add);
+                vm.playlist.first_add = true;
+                console.log(vm.playlist.first_add);
+                vm.playlist.$update({id: vm.playlist.id}).then(function(response){
+                    console.log(response);
+                });
+              }, function errorCallback(response) {
+                console.log(response);
+              });
 
-        // $http({
-        //   method: "POST",
-        //   url: "https://api.spotify.com/v1/users/"+vm.playlist.spotify_user_id+"/playlists/"+vm.playlist.spotify_playlist_id+"/tracks?uris="+uri,
-        //   headers: {
-        //       "Accept": "application/json",
-        //       "Authorization": "Bearer "+vm.playlist.access_token
-        //   }
-        // }).then(function successCallback(response) {
-        //     console.log(response);
-        //   }, function errorCallback(response) {
-        //     console.log(response);
-        //   });
+          }
 
 
 

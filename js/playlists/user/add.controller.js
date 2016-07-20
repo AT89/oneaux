@@ -13,10 +13,9 @@
   ])
 
   function AddControllerFunction ($state, $stateParams, SpotifyFactory, SongFactory, PlaylistFactory, Spotify, $http) {
-    console.log("add controller!")
-
     var vm = this;
     vm.playlist_id = $stateParams.playlist_id;
+    vm.user_name = $stateParams.user;
     PlaylistFactory.get({id: vm.playlist_id}).$promise.then(function(response) {
         vm.playlist = response;
         console.log(vm.playlist);
@@ -54,30 +53,34 @@
               }, function errorCallback(response) {
                 console.log(response);
               });
-
           }
+          console.log(parseInt(localStorage.getItem('user-song-count')) < vm.playlist.songs_per_user);
+          console.log(vm.playlist.songs_per_user == null);
+          if ((parseInt(localStorage.getItem('user-song-count')) < vm.playlist.songs_per_user) || vm.songs_per_user === null) {
+          vm.new_song = new SongFactory({
+            "user": vm.user_name,
+            "playlist_id": vm.playlist_id,
+            "title": title,
+            "artist": artist,
+            "album": album,
+            "album_art": image_url,
+            "duration": duration,
+            "audio_url": preview,
+            "score": 0,
+            "uri": uri
+          })
 
-
-
-      vm.new_song = new SongFactory({
-        "user": "Anh",
-        "playlist_id": vm.playlist_id,
-        "title": title,
-        "artist": artist,
-        "album": album,
-        "album_art": image_url,
-        "duration": duration,
-        "audio_url": preview,
-        "score": 0,
-        "uri": uri
-      })
-
-      console.log(vm.new_song);
-      vm.new_song.$save({playlist_id: vm.playlist_id}).then(function() {
-        console.log("should redirect");
-        $state.go("Add", {playlist_id: vm.playlist_id});
-      })
-    }
+          console.log(vm.new_song);
+          vm.new_song.$save({playlist_id: vm.playlist_id}).then(function() {
+            localStorage.setItem('user-song-count', parseInt(localStorage.getItem('user-song-count')) + 1);
+            console.log(localStorage.getItem('user-song-count'));
+            $state.go("Add", {playlist_id: vm.playlist_id});
+          })
+          }
+          else {
+              alert("Only "+vm.playlist.songs_per_user+" songs allowed per user in this playlists!");
+          }
+      }
   }
 
 })();

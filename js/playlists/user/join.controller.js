@@ -7,16 +7,17 @@ angular.module("oneaux")
 
 function JoinControllerFunction($state, PlaylistFactory){
   var vm = this;
-  vm.join_plist = function(code) {
+  localStorage.setItem('user-song-count', 0);
+  console.log(localStorage.getItem('user-song-count'));
 
-    console.log(code);
+  vm.join_plist = function(name, code) {
     PlaylistFactory.query().$promise.then(function (playlists) {
       vm.playlists = playlists;
       for (i=0; i< vm.playlists.length; i++) {
         if (vm.playlists[i].access_code === code) {
           vm.playlist = vm.playlists[i];
-          console.log(vm.playlist.id);
-          $state.go("Add", {playlist_id: vm.playlist.id})
+          localStorage.setItem('username', name);
+          $state.go("Add", {playlist_id: vm.playlist.id, user: name})
         }
       };
     });

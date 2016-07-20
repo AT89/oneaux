@@ -17,7 +17,6 @@
 
     var vm = this;
     vm.playlist_id = $stateParams.playlist_id;
-    vm.first_song_counter = 0;
     PlaylistFactory.get({id: vm.playlist_id}).$promise.then(function(response) {
         vm.playlist = response;
         console.log(vm.playlist);

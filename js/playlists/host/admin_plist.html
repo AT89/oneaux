@@ -7,16 +7,17 @@
 <h2>Admin Playlist!</h2>
 <br>
 <button class="button" data-ng-click="AdminPlistViewModel.refresh_token()">Refresh Token</button>
+<button class="button" data-ng-click="AdminPlistViewModel.playlistSort()">Update Playlist</button>
 <br>
 <br>
 <!-- <iframe src='https://embed.spotify.com/?uri=spotify:user:wombat_dev:playlist:38Uai5VlN3H7LuisymI9iV' width='300' height='380' frameborder='0' allowtransparency='true'></iframe> -->
 <div data-ng-bind-html="AdminPlistViewModel.play_song"></div>
 <div class="songs">
     <div class="adminsong" data-ng-repeat="song in AdminPlistViewModel.songs | orderBy: 'score' : true">
-        <p>{{song.score}}&nbsp&nbsp-&nbsp&nbsp{{song.title}}&nbsp&nbsp-&nbsp&nbsp{{song.artist}}</p>
+        <p>{{song.score}}&nbsp&nbsp-&nbsp&nbsp{{song.title}}&nbsp&nbsp-&nbsp&nbsp{{song.artist}}&nbsp&nbsp-&nbsp&nbsp
+        <button class="button" data-ng-click="AdminPlistViewModel.update_score(song, 1)">Vote up</button>&nbsp&nbsp-&nbsp&nbsp
+        <button class="button" data-ng-click="AdminPlistViewModel.update_score(song, -1)">Vote down</button>
+        </p>
         <img data-ng-src="{{song.album_art}}" alt="{{song.title}}" />
     </div>
 </div>
-
-<button class="button" data-ng-click="AdminPlistViewModel.update_score(1)">Vote up</button>
-<button class="button" data-ng-click="AdminPlistViewModel.update_score(-1)">Vote down</button>

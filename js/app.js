@@ -65,7 +65,8 @@
             templateUrl: "js/playlists/host/confirmation.html",
             controller: "ConfirmationController",
             controllerAs: "ConfirmationViewModel",
-            params: { "playlist_id": null }
+            params: { "playlist_id": null,
+                      "access_token": null }
           })
           .state("Invite", {
             url: "/invite",

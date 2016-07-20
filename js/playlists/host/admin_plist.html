@@ -1,4 +1,4 @@
-
+<!-- 
 <h3>Admin_Plist.html</h3>
 
 <button class="button"><a data-ui-sref="Home">Back to home</a></button>
@@ -10,7 +10,6 @@
 <button class="button" data-ng-click="AdminPlistViewModel.playlistSort()">Update Playlist</button>
 <br>
 <br>
-<!-- <iframe src='https://embed.spotify.com/?uri=spotify:user:wombat_dev:playlist:38Uai5VlN3H7LuisymI9iV' width='300' height='380' frameborder='0' allowtransparency='true'></iframe> -->
 <div data-ng-bind-html="AdminPlistViewModel.play_song"></div>
 <div class="songs">
     <div class="adminsong" data-ng-repeat="song in AdminPlistViewModel.songs | orderBy: 'score' : true | filter: {active: true} ">
@@ -20,4 +19,30 @@
         </p>
         <img data-ng-src="{{song.album_art}}" alt="{{song.title}}" />
     </div>
-</div>
+</div> -->
+
+<h3>Admin_Plist.html</h3>
+<br>
+<button class="btn" data-ng-click="AdminPlistViewModel.refresh_token()">Refresh Token</button>
+<button class="btn" data-ng-click="AdminPlistViewModel.playlistSort()">Update Playlist</button>
+<br>
+<br>
+<!-- <iframe src='https://embed.spotify.com/?uri=spotify:user:wombat_dev:playlist:38Uai5VlN3H7LuisymI9iV' width='300' height='380' frameborder='0' allowtransparency='true'></iframe> -->
+<div data-ng-bind-html="AdminPlistViewModel.play_song"></div>
+    <div class="songs" data-ng-repeat="song in AdminPlistViewModel.songs | orderBy: 'score' : true">
+
+        <div class="track">
+          <div class="score">
+          {{song.score}}</div>
+          <div class="votebuttons">
+          <button class="btn btn-success" data-ng-click="AdminPlistViewModel.update_score(song, 1)">Vote up</button>
+
+          <button class="btn btn-danger" data-ng-click="AdminPlistViewModel.update_score(song, -1)">Vote down</button>
+        </div>
+        <div class="songdesc"><p>
+          {{song.title}} by {{song.artist}}</p>
+        </div>
+
+    </div>
+      <img data-ng-src="{{song.album_art}}" alt="{{song.title}}" />
+    </div>

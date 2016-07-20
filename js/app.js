@@ -7,8 +7,6 @@
             "ngAnimate",
             "ngResource",
             "spotify",
-            // "ngCookies",
-            // "ngStorage",
             "playlists"
         ])
         .config ([

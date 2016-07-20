@@ -1,12 +1,26 @@
-<p>Here is your current playlist</p>
 
-<ul ng-repeat = "song in CurrentPlaylist.songs" style="border:1px red solid">
-<li>Title: {{song.title}}</li>
-<li>Artist: {{song.artist}}</li>
-<li>Album: {{song.album}}</li>
-<li>Artist: {{song.album_art}}</li>
-<li>Audio URL: {{song.audio_url}}</li>
-</ul>
-<p>End<p>
+<button class="button"><a data-ui-sref="Home">Back to home</a></button>
+<button class="button"><a data-ui-sref="Add">Add Some More Songs</a></button>
 
-<!-- <p>{{CurrentPlaylist}}</p> -->
+
+<h2>User Playlist!</h2>
+<br>
+<!-- <button class="button" data-ng-click="AdminPlistViewModel.refresh_token()">Refresh Token</button> -->
+<button data-ng-hide="true" class="button" data-ng-click="AdminPlistViewModel.playlistSort()">Update Playlist</button>
+<br>
+<br>
+<!-- <div data-ng-bind-html="AdminPlistViewModel.play_song"></div> -->
+<div >
+  {{message}}
+</div>
+<div class="songs">
+    <div class="adminsong" data-ng-repeat="song in AdminPlistViewModel.songs | orderBy: 'score' : true">
+        <p>{{song.score}}&nbsp&nbsp-&nbsp&nbsp{{song.title}}&nbsp&nbsp-&nbsp&nbsp{{song.artist}}&nbsp&nbsp-&nbsp&nbsp
+        <button class="button" data-ng-click="AdminPlistViewModel.update_score(song, 1)">Vote up</button>&nbsp&nbsp-&nbsp&nbsp
+        <button class="button" data-ng-click="AdminPlistViewModel.update_score(song, -1)">Vote down</button>
+        </p>
+        <img data-ng-src="{{song.album_art}}" alt="{{song.title}}" />
+    </div>
+</div>
+
+<p ui-sref=

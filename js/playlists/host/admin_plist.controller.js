@@ -12,10 +12,12 @@
         "Spotify",
         "$http",
         "$sce",
+        "$scope",
+        "$interval",
         AdminPlistControllerFunction
     ])
 
-    function AdminPlistControllerFunction (PlaylistFactory, SongFactory, $state, $stateParams, Spotify, $http, $sce) {
+    function AdminPlistControllerFunction (PlaylistFactory, SongFactory, $state, $stateParams, Spotify, $http, $sce,$scope,$interval) {
         console.log("I'm in the admin playlist controller!")
         console.log($stateParams.id);
         var vm = this;
@@ -50,6 +52,7 @@
         //         console.log(response);
         //       });
         // }
+
 
         vm.playlistSort = function () {
             vm.list_of_scores = [];
@@ -94,6 +97,7 @@
             //   });
 
 
+
         vm.refresh_token = function () {
             console.log(vm.playlist.access_token);
             Spotify.login();
@@ -111,6 +115,22 @@
             })
 
         }
+/// function starts for timer
+      var c=60;
+      $scope.message="You have "+c+" seconds to vote on the next song.";
+      var timer=$interval (function{
+        $scope.message="You have "+c+" seconds to vote on the next song.";
+        c--;
+        console.log(c);
+        if(c==0){
+          vm.playlistSort();
+        }
+      },1000);
+
+
+
+
+
 
     }
 

@@ -17,7 +17,6 @@
         console.log(vm.new_playlist_id_key);
         // vm.playlists = PlaylistFactory.query();
         // console.log(vm.playlists);
-
     }
 
 })();

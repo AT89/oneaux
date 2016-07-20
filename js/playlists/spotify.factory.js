@@ -10,7 +10,7 @@
   ]);
 
   function SpotifyFactoryFunction ( $resource ) {
-    return $resource( "https://api.spotify.com/v1/search?type=track&limit=5", {}, {
+    return $resource( "https://api.spotify.com/v1/search?type=track&limit=10", {}, {
       'query':  {method:'GET', isArray:false}
     } );
   }

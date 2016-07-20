@@ -16,7 +16,7 @@
     <form data-ng-submit="CreateViewModel.create(name, access_code, songs_per_user, location)">
         <input placeholder="Name" data-ng-model="name" />
         <input placeholder="Access code" data-ng-model="access_code" />
-        <input placeholder="Songs per user" data-ng-model="songs_per_user" />
+        <input placeholder="Songs per user (default no limit)" data-ng-model="songs_per_user" />
         <input type="textarea" placeholder="Location" data-ng-model="location" />
         <!-- <input type="text" data-ng-model="CreateViewModel.new_playlist.access_token" value="{{CreateViewModel.access_token}}" style="display: none"/> -->
         <button type="submit">Create</button>

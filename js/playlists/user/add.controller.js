@@ -36,18 +36,18 @@
         console.log(vm.playlist.access_token);
         // Spotify.addPlaylistTracks(vm.playlist.spotify_user_id, vm.playlist.spotify_playlist_id, uri, vm.playlist.access_token);
 
-        $http({
-          method: "POST",
-          url: "https://api.spotify.com/v1/users/"+vm.playlist.spotify_user_id+"/playlists/"+vm.playlist.spotify_playlist_id+"/tracks?uris="+uri,
-          headers: {
-              "Accept": "application/json",
-              "Authorization": "Bearer "+vm.playlist.access_token
-          }
-        }).then(function successCallback(response) {
-            console.log(response);
-          }, function errorCallback(response) {
-            console.log(response);
-          });
+        // $http({
+        //   method: "POST",
+        //   url: "https://api.spotify.com/v1/users/"+vm.playlist.spotify_user_id+"/playlists/"+vm.playlist.spotify_playlist_id+"/tracks?uris="+uri,
+        //   headers: {
+        //       "Accept": "application/json",
+        //       "Authorization": "Bearer "+vm.playlist.access_token
+        //   }
+        // }).then(function successCallback(response) {
+        //     console.log(response);
+        //   }, function errorCallback(response) {
+        //     console.log(response);
+        //   });
 
 
 

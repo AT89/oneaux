@@ -28,11 +28,71 @@
         });
         vm.songs = SongFactory.query({playlist_id: $stateParams.id});
         console.log(vm.songs);
+        vm.playlist_counter = 2;
 
+        // vm.playlistSort = function () {
+        //     console.log(vm.playlist_counter);
+        //     $http({
+        //       method: "PUT",
+        //       url: "https://api.spotify.com/v1/users/"+vm.playlist.spotify_user_id+"/playlists/"+vm.playlist.spotify_playlist_id+"/tracks",
+        //       headers: {
+        //           "Accept": "application/json",
+        //           "Authorization": "Bearer "+vm.playlist.access_token
+        //       },
+        //       data {
+        //           "range_start": 3,
+        //           "range_length": 1,
+        //           "insert_before": vm.playlist_counter
+        //       }
+        //     }).then(function successCallback(response) {
+        //         console.log(response);
+        //       }, function errorCallback(response) {
+        //         console.log(response);
+        //       });
+        // }
 
         vm.playlistSort = function () {
-            // for (i=0; i<vm.songs.length
+            vm.list_of_scores = [];
+            for (var i = 0; i < vm.songs.length; i++) {
+                vm.list_of_scores.push(vm.songs[i].score);
+            }
+            vm.max_score = Math.max(...vm.list_of_scores);
+            vm.next_song = vm.songs.filter(function( obj ) {
+               console.log(vm.max_score);
+               return obj.score == vm.max_score;
+            })
+            console.log(vm.next_song);
+            console.log(vm.next_song[0].uri);
+            console.log(vm.playlist.access_token);
+            $http({
+              method: "POST",
+              url: "https://api.spotify.com/v1/users/"+vm.playlist.spotify_user_id+"/playlists/"+vm.playlist.spotify_playlist_id+"/tracks?uris="+vm.next_song[0].uri,
+              headers: {
+                  "Accept": "application/json",
+                  "Authorization": "Bearer "+vm.playlist.access_token
+              }
+            })
+            .then(function successCallback(response) {
+                console.log(response);
+              }, function errorCallback(response) {
+                console.log(response);
+            });
         }
+
+            // vm.next_song_uri =
+            // $http({
+            //   method: "POST",
+            //   url: "https://api.spotify.com/v1/users/"+vm.playlist.spotify_user_id+"/playlists/"+vm.playlist.spotify_playlist_id+"/tracks?uris="+vm.next_song_uri,
+            //   headers: {
+            //       "Accept": "application/json",
+            //       "Authorization": "Bearer "+vm.playlist.access_token
+            //   }
+            // }).then(function successCallback(response) {
+            //     console.log(response);
+            //   }, function errorCallback(response) {
+            //     console.log(response);
+            //   });
+
 
         vm.refresh_token = function () {
             console.log(vm.playlist.access_token);
@@ -43,10 +103,9 @@
             vm.playlist.$update({id: vm.playlist.id});
         }
 
-        vm.update_score = function (net) {
-            vm.songs[0].score = parseInt(parseInt(vm.songs[0].score) + parseInt(net));
-            console.log(vm.songs[0]);
-            vm.songs[0].$update({playlist_id: $stateParams.id, id: vm.songs[0].id})
+        vm.update_score = function (song, net) {
+            song.score = parseInt(parseInt(song.score) + parseInt(net));
+            song.$update({playlist_id: $stateParams.id, id: song.id})
             .then(function(){
 
             })

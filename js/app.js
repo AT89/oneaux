@@ -46,7 +46,10 @@
             templateUrl:"js/playlists/user/add.html",
             controller:"AddController",
             controllerAs: "AddViewModel",
-            params: { "playlist_id": null }
+            params: {
+                "playlist_id": null,
+                "user": null
+            }
           })
           .state("Create", {
             url: "/create",
@@ -88,12 +91,7 @@
               controllerAs: "CurrentPlaylist"
             })
 
-
         }
-
-
-
-
 
 // END OF IIFE
 })();

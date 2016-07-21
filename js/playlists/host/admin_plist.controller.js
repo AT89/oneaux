@@ -50,21 +50,41 @@
             vm.next_song[0].active = false;
 
             console.log(vm.next_song[0]);
-            vm.next_song[0].$update({playlist_id: $stateParams.id, id: vm.next_song[0].id}).then(function(response) {
-                console.log(response);
-                $http({
-                  method: "POST",
-                  url: "https://api.spotify.com/v1/users/"+vm.playlist.spotify_user_id+"/playlists/"+vm.playlist.spotify_playlist_id+"/tracks?uris="+vm.next_song[0].uri,
-                  headers: {
+            // vm.next_song[0].$update({playlist_id: $stateParams.id, id: vm.next_song[0].id}).then(function(response) {
+            //     console.log(response);
+            //     $http({
+            //       method: "POST",
+            //       url: "https://api.spotify.com/v1/users/"+vm.playlist.spotify_user_id+"/playlists/"+vm.playlist.spotify_playlist_id+"/tracks?uris="+vm.next_song[0].uri,
+            //       headers: {
+            //           "Accept": "application/json",
+            //           "Authorization": "Bearer "+vm.playlist.access_token
+            //       }
+            //      }).then(function successCallback(response) {
+            //
+            //         console.log(response);
+            //       }, function errorCallback(response) {
+            //         console.log(response);
+            //     });
+            // }) end of function for creating new songs
+            if(vm.next_song[0].active == true){
+                  $http({
+                    method: "POST",
+                    url:"https://api.spotify.com/v1/users/"+vm.playlist.spotify_user_id+"/playlists/"+vm.playlist.spotify_playlist_id+"/tracks?uris="+vm.next_song[0].uri,
+                    headers:{
                       "Accept": "application/json",
                       "Authorization": "Bearer "+vm.playlist.access_token
-                  }
-                 }).then(function successCallback(response) {
+                    }
+                  }).then(function successCallback(response){
                     console.log(response);
-                  }, function errorCallback(response) {
+                    vm.next_song[0].active == false
+                    vm.next_song[0].$update({playlist_id: $stateParams.id, id: vm.next_song[0].id}).then(function(response){
+                      console.log(response);
+                    });
+                  },function errorCallback(response){
                     console.log(response);
-                });
-            })
+                  });
+            }//end of IF active function
+
         }
 
 

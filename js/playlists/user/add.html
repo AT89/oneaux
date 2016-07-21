@@ -24,6 +24,10 @@
 </table>
 <button class="button"><a data-ui-sref="CurrentPlaylist({id: {{AddViewModel.playlist_id}}})">Playlist
 </a></button> -->
+<button class="big" data-ng-if="localStorage.getItem('admin-token')==undefined"><a data-ui-sref="CurrentPlaylist({id: AddViewModel.playlist_id, user: AddViewModel.user_name})">Playlist</a></button>
+<button class="big" data-ng-if="localStorage.getItem('admin-token')!=undefined"><a data-ui-sref="AdminPlist({id: AddViewModel.playlist_id})">Admin Playlist</a></button>
+<br>
+<br>
 
 <form data-ng-submit="AddViewModel.search(vm.song_search)">
   <input type="text" data-ng-model="vm.song_search" placeholder="Search for a song..." />
@@ -46,7 +50,3 @@
   </tbody>
 </table>
 </div>
-<br><br>
-<div class="footer">
-<button class="big"><a data-ui-sref="CurrentPlaylist({id: AddViewModel.playlist_id, user: AddViewModel.user_name})">Playlist
-</a></button></div>

@@ -14,7 +14,6 @@
         console.log("I'm in the confirmation controller!")
         var vm = this;
         vm.new_playlist_id_key = $stateParams.playlist_id;
-        console.log(vm.new_playlist_id_key);
         // vm.playlists = PlaylistFactory.query();
         // console.log(vm.playlists);
         var randomString = function(length) {
@@ -25,7 +24,10 @@
             }
             return text;
         }
-        localStorage.setItem('admin-token', randomString)
+        localStorage.setItem('admin-token', randomString(10));
+        localStorage.setItem('user-song-count', 0);
+        localStorage.setItem('playlist-token', vm.new_playlist_id_key);
+        localStorage.setItem('username', "Host");
     }
 
 })();

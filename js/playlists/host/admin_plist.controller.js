@@ -13,11 +13,11 @@
         "$http",
         "$sce",
         "$scope",
-        "$interval",
+        "$timeout",
         AdminPlistControllerFunction
     ])
 
-    function AdminPlistControllerFunction (PlaylistFactory, SongFactory, $state, $stateParams, Spotify, $http, $sce,$scope,$interval) {
+    function AdminPlistControllerFunction (PlaylistFactory, SongFactory, $state, $stateParams, Spotify, $http, $sce,$scope,$timeout) {
                 var vm = this;
         PlaylistFactory.get({id: $stateParams.id}).$promise.then(function(response) {
             vm.playlist = response;
@@ -28,9 +28,12 @@
 
 
         vm.playlistSort = function () {
+          console.dir($stateParams.id);
+          console.dir(vm.songs[0].id)
             vm.list_of_scores = [];
+            console.log(vm.songs[0])
             for (var i = 0; i < vm.songs.length; i++) {
-                if (vm.song[i].active === true) {
+                if (vm.songs[i].active === true) {
                     vm.list_of_scores.push(vm.songs[i].score);
                 }
             }
@@ -47,7 +50,7 @@
             vm.next_song.$update({playlist_id: $stateParams.id, id: song.id}).then(function() {
                 $http({
                   method: "POST",
-                  url: "https://api.spotify.com/v1/users/"+vm.playlist.spotify_user_id+"/playlists/"+vm.playlist.spotify_playlist_id+"/tracks?uris="+vm.next_song[0].uri,
+                  url: "https://api.spotify.com/v1/users/"+vm.playlist.spotify_user_id+"/playlists/"+vm.playlist.spotify_playlist_id+"/tracks?uris="+vm.next_song.uri,
                   headers: {
                       "Accept": "application/json",
                       "Authorization": "Bearer "+vm.playlist.access_token
@@ -77,23 +80,8 @@
             song.$delete({playlist_id: vm.playlist.id, id: song.id});
             $state.reload();
         }
-/// function starts for timer
-      var c=60;
-      $scope.message="You have "+c+" seconds to vote on the next song.";
-      var timer=$interval (function{
-        $scope.message="You have "+c+" seconds to vote on the next song.";
-        c--;
-        console.log(c);
-        if(c==0){
-          vm.playlistSort();
-        }
-      },1000);
-
-
-
-
-
 
     }
+
 
 })();

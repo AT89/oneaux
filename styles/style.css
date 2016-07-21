@@ -2,6 +2,7 @@ body{
   text-align: center;
   background-color: black;
   color: white;
+
 }
 .big{
     -moz-box-shadow:inset 3px 8px 10px 0px #ffffff;
@@ -39,6 +40,7 @@ body{
     background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed',GradientType=0);
     background-color:#dfdfdf;
+    color: purple;
 }
 .big a:hover {
   color: purple;
@@ -52,6 +54,7 @@ body{
   text-decoration: none;
   /*font-family: 'Alegreya Sans', sans-serif;*/
   dispay: inline-block;
+
 }
 
 #home{
@@ -171,4 +174,7 @@ align-items:flex-end;
 #logo{
   height: 100px;
   width: 100px;
+}
+.codes{
+  color: purple;
 }

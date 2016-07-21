@@ -1,4 +1,4 @@
-<!-- 
+<!--
 <h3>Create.html</h3>
 
 <button class="button"><a data-ui-sref="Home" >Back to home</a></button>
@@ -26,8 +26,10 @@
 
 <p>First you need to log in to Spotify</p>
 <h5>Don't worry, your friends won't need to log in.</h5>
+<p>The Access code is a code that you will create to share with your friends to add to the playlist</p>
 <br>
-<button class="big" data-ng-click="CreateViewModel.login()">Log in to Spotify</button>
+
+<img data-ng-click="CreateViewModel.login()" data-ng-if="CreateViewModel.login_check == 0" src="assets/login.png" alt="spotifylogin">
 <br><br><br>
 
 <div data-ng-if="CreateViewModel.login_check == 1">

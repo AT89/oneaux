@@ -1,3 +1,5 @@
 <h3>About.html</h3>
 
 <button class="button"><a data-ui-sref="Home" >Home</a></button>
+
+<button class="button" data-ng-if="localStorage.getItem('admin-token')"><a data-ui-sref="Home" >Home</a></button>

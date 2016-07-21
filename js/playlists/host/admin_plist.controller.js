@@ -77,17 +77,17 @@
             song.$delete({playlist_id: vm.playlist.id, id: song.id});
             $state.reload();
         }
-/// function starts for timer
-      var c=60;
-      $scope.message="You have "+c+" seconds to vote on the next song.";
-      var timer=$interval (function{
-        $scope.message="You have "+c+" seconds to vote on the next song.";
-        c--;
-        console.log(c);
-        if(c==0){
-          vm.playlistSort();
-        }
-      },1000);
+// /// function starts for timer
+//       var c=60;
+//       $scope.message="You have "+c+" seconds to vote on the next song.";
+//       var timer=$interval (function{
+//         $scope.message="You have "+c+" seconds to vote on the next song.";
+//         c--;
+//         console.log(c);
+//         if(c==0){
+//           vm.playlistSort();
+//         }
+//       },1000);
 
 
 

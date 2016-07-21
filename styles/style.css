@@ -94,17 +94,22 @@ p{
   float: left;
   width: 7%;
   height: 20%;
-  font-size: 2em;
+  font-size: 3em;
   font-weight: bold;
+
 }
 .votebuttons{
   float: left;
+  margin-top: 1em;
+  margin-bottom: .5em;
 }
 .songdesc{
   width: 70%;
   font-size: 1.2em;
   float: left;
-  margin-top: .5em;
+
+
+
 }
 .songs {
     position: relative;
@@ -113,13 +118,15 @@ p{
     overflow: hidden;
     margin: .5em;
     background-color: rgb(204,204,204);
-    margin-bottom: .1em;
+
 }
 .songs img {
-    width: 2.8em;
+    width: 4em;
     display: block;
     float: right;
     margin-right: 1em;
+    margin-bottom: .5em;
+    margin-top: .5em;
 }
 .songs p {
     position: absolute;

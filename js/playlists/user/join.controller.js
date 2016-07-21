@@ -17,6 +17,7 @@ function JoinControllerFunction($state, PlaylistFactory){
         if (vm.playlists[i].access_code === code) {
           vm.playlist = vm.playlists[i];
           localStorage.setItem('username', name);
+          localStorage.setItem('playlist-token', vm.playlist.id);
           $state.go("Add", {playlist_id: vm.playlist.id, user: name})
         }
       };

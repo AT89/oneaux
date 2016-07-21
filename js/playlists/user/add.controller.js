@@ -14,8 +14,9 @@
 
   function AddControllerFunction ($state, $stateParams, SpotifyFactory, SongFactory, PlaylistFactory, Spotify, $http) {
     var vm = this;
-    vm.playlist_id = $stateParams.playlist_id;
-    vm.user_name = $stateParams.user;
+    vm.playlist_id = localStorage.getItem('playlist-token');
+    vm.user_name = localStorage.getItem('username');
+
     PlaylistFactory.get({id: vm.playlist_id}).$promise.then(function(response) {
         vm.playlist = response;
         console.log(vm.playlist);
@@ -74,7 +75,6 @@
           vm.new_song.$save({playlist_id: vm.playlist_id}).then(function() {
             localStorage.setItem('user-song-count', parseInt(localStorage.getItem('user-song-count')) + 1);
             console.log(localStorage.getItem('user-song-count'));
-            $state.go("Add", {playlist_id: vm.playlist_id});
           })
           }
           else {

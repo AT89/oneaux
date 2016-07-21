@@ -25,17 +25,16 @@
 <button class="btn" data-ng-click="AdminPlistViewModel.playlistSort()">Update Playlist</button>
 <br>
 <br>
-<!-- <iframe src='https://embed.spotify.com/?uri=spotify:user:wombat_dev:playlist:38Uai5VlN3H7LuisymI9iV' width='300' height='380' frameborder='0' allowtransparency='true'></iframe> -->
 <div data-ng-bind-html="AdminPlistViewModel.play_song"></div>
-    <div class="songs" data-ng-repeat="song in AdminPlistViewModel.songs | orderBy: 'score' : true">
+    <div class="songs" data-ng-repeat="song in AdminPlistViewModel.songs | orderBy: AdminPlistViewModel.orderByFunction : true | filter: {active: true}">
 
         <div class="track">
           <div class="score">
           {{song.score}}</div>
           <div class="votebuttons">
           <button class="btn btn-success" data-ng-click="AdminPlistViewModel.update_score(song, 1)">Vote up</button>
-
           <button class="btn btn-danger" data-ng-click="AdminPlistViewModel.update_score(song, -1)">Vote down</button>
+          <button class="btn btn-warning" data-ng-click="AdminPlistViewModel.remove_song(song)">Remove</button>
         </div>
         <div class="songdesc"><p>
           {{song.title}} by {{song.artist}}</p>

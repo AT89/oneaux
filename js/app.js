@@ -87,7 +87,11 @@
               url:"/current/:id",
               templateUrl: "js/playlists/user/playlist.html",
               controller: "CurrentPlaylistViewModel",
-              controllerAs: "CurrentPlaylist"
+              controllerAs: "CurrentPlaylist",
+              params: {
+                  "playlist_id": null,
+                  "user": null
+              }
             })
 
         }

@@ -47,24 +47,26 @@
             if (localStorage.getItem('username') == vm.next_song.user) {
                 localStorage.setItem('user-song-count', parseInt(localStorage.getItem('user-song-count')) - 1);
             }
-            vm.next_song[0].active = false;
 
-            console.log(vm.next_song[0]);
-            vm.next_song[0].$update({playlist_id: $stateParams.id, id: vm.next_song[0].id}).then(function(response) {
-                console.log(response);
-                $http({
-                  method: "POST",
-                  url: "https://api.spotify.com/v1/users/"+vm.playlist.spotify_user_id+"/playlists/"+vm.playlist.spotify_playlist_id+"/tracks?uris="+vm.next_song[0].uri,
-                  headers: {
-                      "Accept": "application/json",
-                      "Authorization": "Bearer "+vm.playlist.access_token
-                  }
-                 }).then(function successCallback(response) {
+            SongFactory.get({playlist_id: $stateParams.id, id: vm.next_song[0].id}).$promise.then(function(response){
+                vm.song_to_update = response;
+                vm.song_to_update.active = false;
+                vm.song_to_update.$update({playlist_id: $stateParams.id, id: vm.song_to_update.id}).then(function(response) {
                     console.log(response);
-                  }, function errorCallback(response) {
-                    console.log(response);
-                });
-            })
+                    $http({
+                      method: "POST",
+                      url: "https://api.spotify.com/v1/users/"+vm.playlist.spotify_user_id+"/playlists/"+vm.playlist.spotify_playlist_id+"/tracks?uris="+vm.song_to_update.uri,
+                      headers: {
+                          "Accept": "application/json",
+                          "Authorization": "Bearer "+vm.playlist.access_token
+                      }
+                     }).then(function successCallback(response) {
+                        console.log(response);
+                      }, function errorCallback(response) {
+                        console.log(response);
+                    });
+                })
+            });
         }
 
 
@@ -87,6 +89,9 @@
             $state.reload();
         }
 
+        vm.orderByFunction = function(song){
+            return parseInt(song.score);
+        };
 
     }
 

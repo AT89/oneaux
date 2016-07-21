@@ -1,4 +1,4 @@
-<!-- 
+<!--
 <h3>Create.html</h3>
 
 <button class="button"><a data-ui-sref="Home" >Back to home</a></button>
@@ -27,7 +27,7 @@
 <p>First you need to log in to Spotify</p>
 <h5>Don't worry, your friends won't need to log in.</h5>
 <br>
-<button class="big" data-ng-click="CreateViewModel.login()">Log in to Spotify</button>
+<button class="big" data-ng-if="CreateViewModel.login_check == 0" data-ng-click="CreateViewModel.login()">Log in to Spotify</button>
 <br><br><br>
 
 <div data-ng-if="CreateViewModel.login_check == 1">

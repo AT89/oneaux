@@ -37,7 +37,7 @@
   </thead>
   <tbody>
     <tr data-ng-repeat="track in AddViewModel.songs.tracks.items">
-      <td><button class="buttonadd" data-ng-click="AddViewModel.add_song(track.name, track.artists[0].name, track.album.name, track.album.images[1].url, track.duration_ms, track.preview_url, track.uri)">Add</button></td>
+      <td><button class="btn btn-info" data-ng-click="AddViewModel.add_song(track.name, track.artists[0].name, track.album.name, track.album.images[1].url, track.duration_ms, track.preview_url, track.uri)">Add</button></td>
       <td>{{track.name}}</td>
       <td>{{track.artists[0].name}}</td>
       <td>{{track.album.name}}</td>

@@ -24,8 +24,6 @@
             vm.play_song = $sce.trustAsHtml("<iframe src='https://embed.spotify.com/?uri=spotify:user:"+vm.playlist.spotify_user_id+":playlist:"+vm.playlist.spotify_playlist_id+"' width='300' height='380' frameborder='0' allowtransparency='true'></iframe>");
         });
         vm.songs = SongFactory.query({playlist_id: $stateParams.id});
-        vm.playlist_counter = 2;
-
 
         vm.playlistSort = function () {
           console.dir($stateParams.id);
@@ -45,12 +43,15 @@
                     return obj.score == vm.max_score;
                 }
             })
-            console.log(vm.next_song[0]);
+
             if (localStorage.getItem('username') == vm.next_song.user) {
                 localStorage.setItem('user-song-count', parseInt(localStorage.getItem('user-song-count')) - 1);
             }
             vm.next_song[0].active = false;
-            vm.next_song[0].$update({playlist_id: $stateParams.id, id: vm.next_song[0].id, active: false}).then(function() {
+
+            console.log(vm.next_song[0]);
+            vm.next_song[0].$update({playlist_id: $stateParams.id, id: vm.next_song[0].id}).then(function(response) {
+                console.log(response);
                 $http({
                   method: "POST",
                   url: "https://api.spotify.com/v1/users/"+vm.playlist.spotify_user_id+"/playlists/"+vm.playlist.spotify_playlist_id+"/tracks?uris="+vm.next_song.uri,
@@ -85,22 +86,6 @@
             song.$delete({playlist_id: vm.playlist.id, id: song.id});
             $state.reload();
         }
-
-/// function starts for timer
-    //   var c=60;
-    //   $scope.message="You have "+c+" seconds to vote on the next song.";
-    //   var timer=$interval (function{
-    //     $scope.message="You have "+c+" seconds to vote on the next song.";
-    //     c--;
-    //     console.log(c);
-    //     if(c==0){
-    //       vm.playlistSort();
-    //     }
-    //   },1000);
-
-
-
-
 
 
     }

@@ -18,7 +18,9 @@
     ])
 
     function CurrentPlaylistFunction (PlaylistFactory, SongFactory, $state, $stateParams, Spotify, $http, $sce,$scope,$timeout) {
-                var vm = this;
+        var vm = this;
+        vm.playlist_id = localStorage.getItem('playlist-token');
+        vm.user_name = localStorage.getItem('username');
         PlaylistFactory.get({id: $stateParams.id}).$promise.then(function(response) {
             vm.playlist = response;
             vm.play_song = $sce.trustAsHtml("<iframe src='https://embed.spotify.com/?uri=spotify:user:"+vm.playlist.spotify_user_id+":playlist:"+vm.playlist.spotify_playlist_id+"' width='300' height='380' frameborder='0' allowtransparency='true'></iframe>");

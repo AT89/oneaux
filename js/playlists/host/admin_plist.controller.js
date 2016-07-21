@@ -47,7 +47,6 @@
             if (localStorage.getItem('username') == vm.next_song.user) {
                 localStorage.setItem('user-song-count', parseInt(localStorage.getItem('user-song-count')) - 1);
             }
-            vm.next_song[0].active = false;
 
             console.log(vm.next_song[0]);
             // vm.next_song[0].$update({playlist_id: $stateParams.id, id: vm.next_song[0].id}).then(function(response) {
@@ -107,6 +106,9 @@
             $state.reload();
         }
 
+        vm.orderByFunction = function(song){
+            return parseInt(song.score);
+        };
 
     }
 

@@ -14,7 +14,7 @@
         ])
         .config(function (SpotifyProvider) {
           SpotifyProvider.setClientId('6c399ddd5811422691be5a67e8ce0fcf');
-          SpotifyProvider.setRedirectUri('http://localhost:8080/callback.html');
+          SpotifyProvider.setRedirectUri('https://at89.github.io/playlist-angular/callback.html');
           SpotifyProvider.setScope('playlist-modify-private playlist-modify-public');
           // If you already have an auth token
           SpotifyProvider.setAuthToken('b4114de99b7f491b943f5eeeaf958e74');

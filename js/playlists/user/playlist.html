@@ -1,6 +1,3 @@
-<script>
- setInterval(function(){ document.getElementById("update").click(); }, 10000);
-</script>
 <button class="button"><a data-ui-sref="Home">Back to home</a></button>
 <button class="button"><a data-ui-sref="Add">Add Some More Songs</a></button>
 
@@ -8,23 +5,20 @@
 <h2>User Playlist!</h2>
 <br>
 <!-- <button class="button" data-ng-click="AdminPlistViewModel.refresh_token()">Refresh Token</button> -->
-<button id="update" data-ng-hide="false" class="button" data-ng-click="AdminPlistViewModel.playlistSort()">Update Playlist</button>
+<button id="update" data-ng-hide="true" class="button" data-ng-click="CurrentPlaylist.playlistSort()">Update Playlist</button>
 <br>
 <br>
-<!-- <div data-ng-bind-html="AdminPlistViewModel.play_song"></div> -->
-<!-- <div >
-  {{message}}
-</div> -->
 
-    <div class="songs" data-ng-repeat="song in AdminPlistViewModel.songs | orderBy: 'score' : true">
+
+    <div class="songs" data-ng-repeat="song in CurrentPlaylist.songs | orderBy: 'score' : true">
 
         <div class="track">
           <div class="score">
           {{song.score}}</div>
           <div class="votebuttons">
-          <button class="btn btn-success" data-ng-click="AdminPlistViewModel.update_score(song, 1)">Vote up</button>
+          <button class="btn btn-success" data-ng-click="CurrentPlaylist.update_score(song, 1)">Vote up</button>
 
-          <button class="btn btn-danger" data-ng-click="AdminPlistViewModel.update_score(song, -1)">Vote down</button>
+          <button class="btn btn-danger" data-ng-click="CurrentPlaylist.update_score(song, -1)">Vote down</button>
         </div>
         <div class="songdesc"><p>
           {{song.title}} by {{song.artist}}</p>

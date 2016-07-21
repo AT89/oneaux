@@ -86,8 +86,8 @@
           .state("CurrentPlaylist",{
               url:"/current/:id",
               templateUrl: "js/playlists/user/playlist.html",
-              controller: /**"CurrentPlaylistViewModel"*/"AdminPlistController",
-              controllerAs: "AdminPlistViewModel"/**"CurrentPlaylist"*/
+              controller: "CurrentPlaylistViewModel",
+              controllerAs: "CurrentPlaylist"
             })
 
         }

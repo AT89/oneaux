@@ -13,11 +13,11 @@
         "$http",
         "$sce",
         "$scope",
-        "$interval",
+        "$timeout",
         AdminPlistControllerFunction
     ])
 
-    function AdminPlistControllerFunction (PlaylistFactory, SongFactory, $state, $stateParams, Spotify, $http, $sce,$scope,$interval) {
+    function AdminPlistControllerFunction (PlaylistFactory, SongFactory, $state, $stateParams, Spotify, $http, $sce,$scope,$timeout) {
                 var vm = this;
         PlaylistFactory.get({id: $stateParams.id}).$promise.then(function(response) {
             vm.playlist = response;
@@ -26,7 +26,10 @@
         vm.songs = SongFactory.query({playlist_id: $stateParams.id});
 
         vm.playlistSort = function () {
+          console.dir($stateParams.id);
+          console.dir(vm.songs[0].id);
             vm.list_of_scores = [];
+            console.log(vm.songs[0])
             for (var i = 0; i < vm.songs.length; i++) {
                 if (vm.songs[i].active === true) {
                     vm.list_of_scores.push(vm.songs[i].score);
@@ -34,6 +37,7 @@
             }
             console.log(vm.list_of_scores);
             vm.max_score = Math.max(...vm.list_of_scores);
+
             vm.next_song = vm.songs.filter(function( obj ) {
                 if (obj.active === true) {
                     return obj.score == vm.max_score;
@@ -44,17 +48,18 @@
                 localStorage.setItem('user-song-count', parseInt(localStorage.getItem('user-song-count')) - 1);
             }
             vm.next_song[0].active = false;
+
             console.log(vm.next_song[0]);
             vm.next_song[0].$update({playlist_id: $stateParams.id, id: vm.next_song[0].id}).then(function(response) {
                 console.log(response);
                 $http({
                   method: "POST",
-                  url: "https://api.spotify.com/v1/users/"+vm.playlist.spotify_user_id+"/playlists/"+vm.playlist.spotify_playlist_id+"/tracks?uris="+vm.next_song[0].uri,
+                  url: "https://api.spotify.com/v1/users/"+vm.playlist.spotify_user_id+"/playlists/"+vm.playlist.spotify_playlist_id+"/tracks?uris="+vm.next_song.uri,
                   headers: {
                       "Accept": "application/json",
                       "Authorization": "Bearer "+vm.playlist.access_token
                   }
-                }).then(function successCallback(response) {
+                 }).then(function successCallback(response) {
                     console.log(response);
                   }, function errorCallback(response) {
                     console.log(response);
@@ -82,36 +87,8 @@
             $state.reload();
         }
 
-// /// function starts for timer
-//       var c=60;
-//       $scope.message="You have "+c+" seconds to vote on the next song.";
-//       var timer=$interval (function{
-//         $scope.message="You have "+c+" seconds to vote on the next song.";
-//         c--;
-//         console.log(c);
-//         if(c==0){
-//           vm.playlistSort();
-//         }
-//       },1000);
-
-/// function starts for timer
-    //   var c=60;
-    //   $scope.message="You have "+c+" seconds to vote on the next song.";
-    //   var timer=$interval (function{
-    //     $scope.message="You have "+c+" seconds to vote on the next song.";
-    //     c--;
-    //     console.log(c);
-    //     if(c==0){
-    //       vm.playlistSort();
-    //     }
-    //   },1000);
-
-
-
-
-
-
 
     }
+
 
 })();

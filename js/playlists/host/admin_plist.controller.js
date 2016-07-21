@@ -24,8 +24,6 @@
             vm.play_song = $sce.trustAsHtml("<iframe src='https://embed.spotify.com/?uri=spotify:user:"+vm.playlist.spotify_user_id+":playlist:"+vm.playlist.spotify_playlist_id+"' width='300' height='380' frameborder='0' allowtransparency='true'></iframe>");
         });
         vm.songs = SongFactory.query({playlist_id: $stateParams.id});
-        vm.playlist_counter = 2;
-
 
         vm.playlistSort = function () {
             vm.list_of_scores = [];
@@ -41,12 +39,14 @@
                     return obj.score == vm.max_score;
                 }
             })
-            console.log(vm.next_song[0]);
+
             if (localStorage.getItem('username') == vm.next_song.user) {
                 localStorage.setItem('user-song-count', parseInt(localStorage.getItem('user-song-count')) - 1);
             }
             vm.next_song[0].active = false;
-            vm.next_song[0].$update({playlist_id: $stateParams.id, id: vm.next_song[0].id}).then(function() {
+            console.log(vm.next_song[0]);
+            vm.next_song[0].$update({playlist_id: $stateParams.id, id: vm.next_song[0].id}).then(function(response) {
+                console.log(response);
                 $http({
                   method: "POST",
                   url: "https://api.spotify.com/v1/users/"+vm.playlist.spotify_user_id+"/playlists/"+vm.playlist.spotify_playlist_id+"/tracks?uris="+vm.next_song[0].uri,

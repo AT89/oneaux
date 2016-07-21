@@ -54,7 +54,7 @@
                 console.log(response);
                 $http({
                   method: "POST",
-                  url: "https://api.spotify.com/v1/users/"+vm.playlist.spotify_user_id+"/playlists/"+vm.playlist.spotify_playlist_id+"/tracks?uris="+vm.next_song.uri,
+                  url: "https://api.spotify.com/v1/users/"+vm.playlist.spotify_user_id+"/playlists/"+vm.playlist.spotify_playlist_id+"/tracks?uris="+vm.next_song[0].uri,
                   headers: {
                       "Accept": "application/json",
                       "Authorization": "Bearer "+vm.playlist.access_token

@@ -112,7 +112,6 @@ p{
   float: left;
 
 
-
 }
 .songs {
     position: relative;
@@ -121,6 +120,7 @@ p{
     overflow: hidden;
     margin: .5em;
     background-color: rgb(204,204,204);
+
 
 }
 .songs img {

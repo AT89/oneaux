@@ -29,7 +29,7 @@
 
         vm.playlistSort = function () {
           console.dir($stateParams.id);
-          console.dir(vm.songs[0].id)
+          console.dir(vm.songs[0].id);
             vm.list_of_scores = [];
             console.log(vm.songs[0])
             for (var i = 0; i < vm.songs.length; i++) {
@@ -38,16 +38,17 @@
                 }
             }
             vm.max_score = Math.max(...vm.list_of_scores);
-            vm.next_song = vm.songs.filter(function( obj ) {
-                if (obj.active === true) {
-                    return obj.score == vm.max_score;
-                }
-            })
-            if (localStorage.getItem('username') == vm.next_song.user) {
-                localStorage.setItem('user-song-count', parseInt(localStorage.getItem('user-song-count')) - 1);
-            }
-            vm.next_song.active = false;
-            vm.next_song.$update({playlist_id: $stateParams.id, id: song.id}).then(function() {
+            // vm.next_song = vm.songs.filter(function( obj ) {
+            //     if (obj.active === true) {
+            //         return obj.score == vm.max_score;
+            //     }
+            // })
+            // if (localStorage.getItem('username') == vm.next_song.user) {
+            //     localStorage.setItem('user-song-count', parseInt(localStorage.getItem('user-song-count')) - 1);
+            // }
+            console.dir(vm.songs[0].id)
+            // vm.next_song.active = false;
+            vm.next_song.$update({playlist_id: $stateParams.id, id: vm.song.id}).then(function() {
                 $http({
                   method: "POST",
                   url: "https://api.spotify.com/v1/users/"+vm.playlist.spotify_user_id+"/playlists/"+vm.playlist.spotify_playlist_id+"/tracks?uris="+vm.next_song.uri,
@@ -55,11 +56,11 @@
                       "Accept": "application/json",
                       "Authorization": "Bearer "+vm.playlist.access_token
                   }
-                }).then(function successCallback(response) {
-                    console.log(response);
-                  }, function errorCallback(response) {
-                    console.log(response);
-                });
+                 })//.then(function successCallback(response) {
+                //     console.log(response);
+                //   }, function errorCallback(response) {
+                //     console.log(response);
+                // });
             })
         }
 

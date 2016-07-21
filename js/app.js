@@ -4,7 +4,6 @@
 (function() {
     angular.module ("oneaux", [
             "ui.router",
-            "ngAnimate",
             "ngResource",
             "spotify",
             "playlists"

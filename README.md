@@ -53,9 +53,9 @@ playlist on Spotify would only add the top voted song at either the click button
 ##Thursday 7/21/2016
 
 #Dependencies
-##Angular JS
-##Bootstrap CSS (solves media queries)
-##Rails 5 (--api mode is amazing)
-##Spotify-angular module
-##Spotify API
-##Spotify
+-Angular JS
+-Bootstrap CSS (solves media queries)
+-Rails 5 (--api mode is amazing)
+-Spotify-angular module
+-Spotify API
+-Spotify

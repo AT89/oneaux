@@ -34,7 +34,9 @@ playlist on Spotify would only add the top voted song at either the click button
 -This is the big picture of our visual map. 
 
 
--We knew that we had to have 2 views
+-We knew that we had to have 2 'views' for the Admin/Host and the users when they see the playlist
+
+
 ##Friday 7/15/2016
 -We spent the majority of the day coming up with cool ideas that we all wanted to work on. Around 2pm we decided to go with OneAux.
 -Fun fact, we used the name Dinosaur and raptors as our module when we were still unsure of the name (we did a find and replace later)

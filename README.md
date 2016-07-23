@@ -48,8 +48,11 @@ playlist on Spotify would only add the top voted song at either the click button
 
 ##Friday 7/15/2016
 -We spent the majority of the day coming up with cool ideas that we all wanted to work on. Around 2pm we decided to go with OneAux.
+
 -Fun fact, we used the name Dinosaur and raptors as our module when we were still unsure of the name (we did a find and replace later)
+
 -We then split up the roles of duties
+
 ##Saturday 7/16/2016
 -Took a much needed break
 ##Sunday 7/17/2016

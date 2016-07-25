@@ -43,28 +43,9 @@ playlist on Spotify would only add the top voted song at either the click button
 -This is the big picture of our visual map. 
 
 
--We knew that we had to have 2 'views' for the Admin/Host and the users when they see the playlist
+-We knew that we had to have 2 'views' for the Admin/Host and the users when they see the playlist and the host can delete songs.
 
 
-##Friday 7/15/2016
--We spent the majority of the day coming up with cool ideas that we all wanted to work on. Around 2pm we decided to go with OneAux.
-
--Fun fact, we used the name Dinosaur and raptors as our module when we were still unsure of the name (we did a find and replace later)
-
--We then split up the roles of duties
-
-##Saturday 7/16/2016
--Took a much needed break
-##Sunday 7/17/2016
--Started the rails api
--Started the views for admin and user
-##Monday 7/18/2016
--stuff
-##Tuesday 7/19/2016
--stuff
-##Wednesday 7/20/2016
--stuff
-##Thursday 7/21/2016
 
 #Dependencies
 -Angular JS

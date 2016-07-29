@@ -10,7 +10,7 @@
   ]);
 
   function PlaylistFactoryFunction ( $resource ) {
-    return $resource( "https://dry-citadel-69831.herokuapp.com/playlists/:id.json", {}, {
+    return $resource( "https://oneaux.herokuapp.com/playlists/:id.json", {}, {
       update: {method: "PUT"}
     });
   }

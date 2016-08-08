@@ -60,4 +60,4 @@ playlist on Spotify would only add the top voted song at either the click button
 
 -Spotify
 
--Rails API Github: https://github.com/AT89/playlist-rails-api
+-Rails API Github: https://github.com/AT89/oneAux-api

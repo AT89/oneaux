@@ -179,3 +179,12 @@ align-items:flex-end;
 .codes{
   color: purple;
 }
+.biolink {
+  color: blue;
+}
+.biolink:hover{
+  color: lightblue;
+}
+.biolink:visited{
+  color: blue;
+}

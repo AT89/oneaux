@@ -181,6 +181,7 @@ align-items:flex-end;
 }
 .biolink {
   color: purple;
+  font-size: 120%;
 }
 .biolink:hover{
   color: lightblue;

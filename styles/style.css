@@ -180,12 +180,12 @@ align-items:flex-end;
   color: purple;
 }
 .biolink {
-  color: purple;
+  color: lightblue;
   font-size: 120%;
 }
-.biolink:hover{
+/*.biolink:hover{
   color: lightblue;
-}
+}*/
 .biolink:visited{
-  color: purple;
+  color: lightblue;
 }

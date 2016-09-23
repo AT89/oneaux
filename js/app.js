@@ -22,6 +22,13 @@
 
         function RouterFunction($stateProvider) {
           $stateProvider
+          .state("Start", {
+            url: "",
+            templateUrl: "js/playlists/index.html",
+            controller: "HomeController",
+            controllerAs: "HomeViewModel"
+            //need to create a StartController or (change Home) to directions etc
+          })
           .state("Home", {
             url: "/",
             templateUrl: "js/playlists/index.html",

@@ -16,6 +16,10 @@ html, body  {
   width: 100%;
   height: 100%;
 }
+img.spotify-login  {
+  width: 300px;
+  height: auto;
+}
 
 body {
     background: grey;
@@ -162,9 +166,12 @@ body {
   }
 }
 p{
-    width: 500px;
+    width: 350px;
     margin-right: auto;
     margin-left: auto;
+}
+.track{
+  font-size: 70%;
 }
 .red {
   color: darkblue;

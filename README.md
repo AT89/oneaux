@@ -1,6 +1,6 @@
 #OneAux
 -OneAux was created by James Graham, Tyson Green and Anh Truong. 
-**-look at the timestamp of when this created vs Spotify officially introduced Jam, its real-time collaborative listening feature, on September 26, 2023 :)**
+-**look at the timestamp of when this created vs Spotify officially introduced Jam, its real-time collaborative listening feature, on September 26, 2023 :)**
 
 -We decided to make an app that would dynamically sort a playlist to encourage people to share music and enjoy new music. 
 
